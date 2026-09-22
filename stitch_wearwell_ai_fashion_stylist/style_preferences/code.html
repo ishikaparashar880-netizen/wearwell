@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WearWell - Choose Your Style</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#d596b3",
+                        "on-secondary-fixed": "#1f1b10",
+                        "surface-container-low": "#f6f3ee",
+                        "outline-variant": "#d4c2c8",
+                        "surface-container-highest": "#e5e2dd",
+                        "surface-tint": "#834e68",
+                        "secondary-fixed": "#eae2d0",
+                        "on-secondary-fixed-variant": "#4b4639",
+                        "secondary-fixed-dim": "#cec6b5",
+                        "tertiary-fixed-dim": "#bbcbba",
+                        "surface-variant": "#e5e2dd",
+                        "surface-dim": "#dcdad5",
+                        "surface-container": "#f0ede9",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#f6b4d1",
+                        "on-primary-fixed-variant": "#68374f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#111f14",
+                        "inverse-surface": "#31302d",
+                        "surface-bright": "#fcf9f4",
+                        "surface-container-high": "#ebe8e3",
+                        "secondary-container": "#eae2d0",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#f6b4d1",
+                        "secondary": "#645e50",
+                        "tertiary-fixed": "#d7e7d5",
+                        "primary-container": "#5d2e46",
+                        "on-tertiary-container": "#9dad9c",
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-surface": "#1c1c19",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf9f4",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#6a6456",
+                        "outline": "#827378",
+                        "on-tertiary-fixed-variant": "#3c4a3d",
+                        "primary": "#431830",
+                        "on-primary-fixed": "#350c23",
+                        "tertiary-container": "#334134",
+                        "primary-fixed": "#ffd8e7",
+                        "on-surface-variant": "#504348",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#1d2b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "stack-md": "24px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom utilities to supplement Tailwind where needed for specific animations */
+        .style-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateZ(0);
+        }
+        .style-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            pointer-events: none;
+            z-index: 20;
+        }
+        .style-card.selected {
+            transform: scale(0.98);
+        }
+        .style-card.selected::after {
+            border-color: #431830; /* Primary */
+        }
+        .style-card .overlay {
+            background: linear-gradient(to top, rgba(28, 28, 25, 0.8) 0%, rgba(28, 28, 25, 0) 60%);
+        }
+        .check-icon {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .style-card.selected .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Hide scrollbar for a cleaner look while maintaining functionality */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf9f4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4c2c8; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #827378; 
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col relative pb-[100px]">
+<!-- Main Content Container -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-section-gap">
+<!-- Header Section -->
+<header class="text-center mb-stack-lg max-w-2xl mx-auto">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-stack-sm">
+                Tell us your style preference.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Choose one or more styles you love to personalize your digital concierge and AI recommendations.
+            </p>
+</header>
+<!-- Bento/Lookbook Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-base md:gap-gutter">
+<!-- Card 1: Western/Casual -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="western">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A lifestyle portrait of a person wearing elevated casual western clothing, featuring a high-quality indigo denim jacket over a crisp white organic cotton tee. The setting is a bright, airy modern loft with natural sunlight casting soft shadows, emphasizing a serene, soft minimalist aesthetic. The color palette revolves around crisp whites, warm creams, and deep indigo. The mood is relaxed, approachable, yet undeniably refined and elegant, capturing a high-end editorial fashion photography feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRI_cYPWHrlQD3zVXHdwc0bhhk_ZQXEiVvMwXqcfyyc4fOkoDC4r7M56fhTlql4qynI6rpKXzPYgO1mp4ppK8p0czCPx9AIbxSdJZ6zxNVpOsZQl_r6m16xdIsTLomufLU0t5QhCBOdbhF6vJ59V_qdWjQK2DjfFfPfVELsg43mOnJAq4Q3_3n5qGmC8nRoIaCv2QijFrD1ov37Ag9H63CwZREYIv57jg6jQLSERvvOtEUmlRbl5ZVzA"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<!-- Checkmark indicator -->
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<!-- Content -->
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Western Casual</h3>
+</div>
+</button>
+<!-- Card 2: Korean/K-Fashion -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="korean">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An elegant fashion shot of Korean K-Fashion style, featuring an oversized, softly tailored pastel blazer layered over a minimalist mock-neck top. The subject stands against a clean, warm cream-colored studio backdrop, highlighting the soft minimalist design philosophy. The lighting is incredibly soft and diffused, creating a serene, almost ethereal mood. The color palette incorporates soft blush pinks, gentle sages, and off-whites, presenting a highly curated, sophisticated, and contemporary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_IKis0vDI3MSf5mK-KQO1mCaxTk3s7iWIWeEFVoYPj1NAnWi6CJxJIGoxevxUYR2XmQyuXTSyoI-FbDNTmPJWWUfIWKlZU5JzPQnml367Qu9sBOgf27Xrbi_6H27hK6K2vMzI2qE6Pe4OQLnwUKZwtN3mGEguLUskGxn3qFLwGw4GWoa6VdH4WmXQUWnLgZi-e5haV_9A3zJuZHlU2Or4l1TuVl2ZusrbP_XwKukkgCk3Hvf9_wyo1A"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">K-Fashion</h3>
+</div>
+</button>
+<!-- Card 3: Indian Ethnic -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="indian">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A breathtaking editorial photo showcasing contemporary Indian Ethnic wear. A woman is adorned in a modern, subtly shimmering silk saree in a deep plum tone, paired with minimalist geometric gold jewelry. The background is an architectural setting featuring warm sandstone arches bathed in golden hour sunlight. The aesthetic blends traditional richness with soft minimalism, maintaining an uncluttered, elevated composition. The mood is majestic, elegant, and deeply sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk2KLbMTTKYKZ6dNfrkMIZ0I62lIiwEpbpVX05_85zCUq54EfsdNPopKif0LRVhT82YadFt9CQ_4cALNZ7rwyald3rjPOIUwYfCThBzccfK7HH9z8FlOUKHUz3fRWfoN3eINo6wP1evNF_kveVkJdanpnPG0K_Ch__JneCADYdZw4HJ_m-9DF_ACisz1N7YHBjMgCZu4fwCRYNO2sUJw2SaweBQH_wDqULJ7WwAgbPtVNSxjJe-f2czw"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Indian Ethnic</h3>
+</div>
+</button>
+<!-- Card 4: Streetwear -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="streetwear">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sleek, modern interpretation of high-end streetwear. The model wears an oversized architectural trench coat over minimalist wide-leg trousers and pristine white sneakers. The setting is a clean, modern concrete environment softened by warm sunlight and subtle architectural shadows. The color palette is strictly neutral—shades of charcoal, concrete grey, and pure white—aligning with a refined, tactile minimalist aesthetic. The overall vibe is calm, edgy yet highly curated and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS7E8-BxFO9guy5E0qrO2k8TGlV7oBTe7SjgDg2F-mwPlUbL9wWwiZp2xrAxQWg5efLLRQheKQYn5P9eKhPO4RAxdLqL5T1WnU-g3KwB8NfaVeYcTQd6i30YTwHkyY0JiJS76JlteY5ckGTfbVCfh85jLNDI7pADkmbETcC5gPzjvYf1z7AP6tt8tNv7qX80zfEoD_9_frL8vMijYLBYCgS2kGO3jyFft8bfdi623qe5ZuioH1APKqxw"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Streetwear</h3>
+</div>
+</button>
+<!-- Card 5: Bohemian -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="bohemian">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An elevated bohemian aesthetic photo featuring flowing, organic fabrics. The subject is wearing a sheer, beautifully draped linen dress in a warm sage hue, accessorized with subtle, fine artisan silver. Captured in a sun-drenched botanical conservatory with blurred foliage in the background, creating a soft, dreamy depth of field. The palette is earthy yet bright, emphasizing a high-end, tactile, and naturalistic elegance that feels both relaxed and luxurious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3akJAz4tyA2Fp_LHIt8jLwu3Mvz8dJHTwtIDCiFNNyDB1qeLCuH3-iQR3FZ9y8vxYTwcbmtkEphhcq58nMOBonojRvZdg25lorTcSrHeTpN0AC-6jGNo0JxjohoQyrF3g1Km2A2sFd9NOz0ike1HUfVmZ2J5cSAJG6XEsK7uvJ4FMG6tBmlYmmcDgiiQPehABAO1TwYrj7GQX5_C2phPk6RaoVzRg-1vfZ6RymHM3AhziW6YB_JwBXw"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Bohemian</h3>
+</div>
+</button>
+<!-- Card 6: Formal -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="formal">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A masterclass in modern formalwear. A sharply tailored, double-breasted suit in a rich, dark espresso color, worn over a crisp light beige silk shirt. The backdrop is an empty, sophisticated gallery space with smooth, sweeping curves and subtle, warm uplighting. The composition relies on negative space to highlight the precise cut and luxurious texture of the fabric. The aesthetic is incredibly refined, authoritative, and perfectly aligned with a calm, high-end digital concierge tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1s_zAcw3ejqMC21_kO50B4RZ_lMidekMXsAjnQCq8POrO8iITrpKjvy9n6cabXd0xtEXEfRkmL4JU_GPgiTjh47l9pP8Y_aCLdVD4tkQW3NeGEmuZ9tCl-NNykgKcQXhprQcH4kjFOH0dFZFp7a99eDv5o6BO2XMD2dp0PRM_ZugGM7gYuuJlt1hYIjusmO-u1mk4h8lUmcm4sTGtWA8-Qgd0_bpQXblY3pwYJ5MhVuu9pCs8myoBFQ"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Formal</h3>
+</div>
+</button>
+<!-- Card 7: Minimalist -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="minimalist">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="The epitome of soft minimalist fashion. A monochromatic outfit consisting of a perfectly draped, luxurious cashmere sweater and fluid silk trousers, all in matching shades of warm ivory and cream. The lighting is flat and even, casting almost invisible shadows to maintain a pristine, airy look. The image is tightly cropped to emphasize the beautiful, tactile quality of the premium fabrics against a pure, bright studio background. The mood is intensely calm and meticulously curated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPn1SKFC96yJOoyP4OADl_XnJ9MIs8k7OyoCKfWVZImwmQtG9YgaCDBaV8Is_Bq9fTZ_VEpj1mmQFPU2hET4xtoHRiaJneo-CTIoCK0kfdCBnLbSPdqbv__-2o7Uw1QGvrOkCmb9kIZKFwLgUHON6AV8tTYvSLzu_a7mzqzTIlHMftq10jXysZpFKBuPBThKFY2PNOFgL1_toxtIp2wQFFRqqFoAz1QtPdTqERa1iDMVrW9TYbslmqqw"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Minimalist</h3>
+</div>
+</button>
+<!-- Card 8: Athleisure -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="athleisure">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-end, sophisticated athleisure wear. The subject wears seamlessly constructed, matte-finish activewear in a muted olive tertiary color, layered under a lightweight, translucent rain shell. The environment is an abstract, softly lit wellness sanctuary featuring light wood tones and smooth plaster walls. The image conveys movement and wellness through a lens of elegant, elevated design, steering clear of aggressive neon colors, favoring instead a calm, grounded, and highly tactile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZh_dvmIkcAcFSPIEb9ZnW4M5fF6hRw6tnOqCoMkD_eIanat11dw7dzhJw2xmsdRDsQe3JyEFgrcFVtanhbR2nHuTo3ZKxAO883lh9whRWVeCA2migOy8hwI3IuhcpRbDULF0mHCxRBq9akEh5pgE2KUyL52SeGg80iLSAVxEs0o-5_0lBU_aWfworynlcfSEDvrvA_78XdrT30LLygxt1i_PbrTXXOmP8puuPoTPPFabjTj8MnzWtOQ"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Athleisure</h3>
+</div>
+</button>
+<!-- Card 9: Vintage -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="vintage">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully curated vintage fashion look, updated for a modern context. A person wears a perfectly preserved 1970s suede jacket in a rich caramel tone over a simple cream silk slip dress. The photography style is modern editorial, avoiding heavy retro filters in favor of crisp, clean, bright lighting that highlights the texture and quality of the heritage garments. The background is a stark, minimal cream wall, focusing all attention on the timeless elegance of the pieces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOL7EF9rYn8hcOMsfqKP4YyVraL9l4xP3boDYG6zunILCGZaLualCdNOBi00hU6WkTzQZSh3Xockw-sKedonOgSR49Oc-yu9bpkThD5wVxZbh9jHWp9ob0nICfuDk_8847quPw9VWp7flMf0MBI7EKefceObtMZ1bixMuLUe3URkFfgMN2-51HcpIYbNuJNCtihxEAQaHY7B6HYB1U_YSk5awCO35nsjzKYMRXP1RmsxHAf73-cn-AEQ"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Vintage</h3>
+</div>
+</button>
+<!-- Card 10: Party/Glam -->
+<button class="style-card group relative w-full aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" data-style-id="glam">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Refined, understated evening glamour. The photograph features a sweeping, minimalist slip dress in a subtle metallic rose-gold or deep plum silk that catches the light elegantly. The setting is intimate and softly illuminated, like a high-end private lounge at dusk, avoiding harsh flash photography. The mood is sensual yet sophisticated, focusing on the tactile drape of the luxurious fabric and a sense of quiet confidence. It perfectly embodies a warm, sophisticated, high-end digital concierge vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzRClW2uVMlFdphz13lL0vE1sjfpDb_TZo1HQd1nUagGruFMjiawJjt1L40pdt9dz5cqoQYtQB8h2OaAd5P00w1Nt-dpCrmG1sgPFs15BUF2wXytbnNDnv-FOCBRJN2F5Y-_2AZAnk6jD3SilE47-mXXFnvnlES5QbcgTRq8ENfJ5bHyeWvj_R43CI5UAdxQ7K5xVSFW3kLgWLAJBcDqNU57uFc2QwerSy_Fv2K_IuDM63Iwk-Ta163Q"/>
+<div class="overlay absolute inset-0 z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+<div class="check-icon absolute top-4 right-4 z-30 bg-primary text-on-primary rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 z-20">
+<h3 class="font-headline-sm text-headline-sm text-on-primary m-0">Party/Glam</h3>
+</div>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-surface-container-highest z-50 py-4 px-margin-mobile md:px-gutter">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary px-4 py-2 transition-colors duration-200 focus:outline-none" type="button">
+                Skip for now
+            </button>
+<button class="font-label-md text-label-md bg-surface-container-highest text-on-surface-variant px-8 py-3 rounded-xl transition-all duration-300 opacity-70 cursor-not-allowed" disabled="" id="continueBtn" type="button">
+                Continue
+            </button>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.style-card');
+            const continueBtn = document.getElementById('continueBtn');
+            const selectedStyles = new Set();
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const styleId = card.getAttribute('data-style-id');
+                    
+                    if (selectedStyles.has(styleId)) {
+                        selectedStyles.delete(styleId);
+                        card.classList.remove('selected');
+                        card.setAttribute('aria-pressed', 'false');
+                    } else {
+                        selectedStyles.add(styleId);
+                        card.classList.add('selected');
+                        card.setAttribute('aria-pressed', 'true');
+                    }
+
+                    updateContinueButton();
+                });
+            });
+
+            function updateContinueButton() {
+                if (selectedStyles.size > 0) {
+                    continueBtn.removeAttribute('disabled');
+                    continueBtn.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'opacity-70', 'cursor-not-allowed');
+                    continueBtn.classList.add('bg-primary', 'text-on-primary', 'hover:shadow-md', 'hover:bg-primary/90', 'cursor-pointer');
+                    
+                    // Simple tactile lift effect on activation
+                    continueBtn.style.transform = 'scale(1.02)';
+                    setTimeout(() => { continueBtn.style.transform = 'scale(1)'; }, 150);
+                } else {
+                    continueBtn.setAttribute('disabled', 'true');
+                    continueBtn.classList.add('bg-surface-container-highest', 'text-on-surface-variant', 'opacity-70', 'cursor-not-allowed');
+                    continueBtn.classList.remove('bg-primary', 'text-on-primary', 'hover:shadow-md', 'hover:bg-primary/90', 'cursor-pointer');
+                }
+            }
+        });
+    </script>
+</body></html>

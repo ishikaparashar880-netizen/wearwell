@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WearWell - Outfit Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#131313",
+                        "plum-accent": "#834e68",
+                        "surface-variant": "#353534",
+                        "tertiary-container": "#834e68",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131313",
+                        "tertiary": "#f6b4d2",
+                        "on-secondary-fixed-variant": "#4b4547",
+                        "primary-container": "#834e68",
+                        "secondary-fixed-dim": "#cdc4c7",
+                        "outline-variant": "#504348",
+                        "on-tertiary": "#4e2139",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-fixed": "#350c23",
+                        "on-primary-container": "#ffcae1",
+                        "inverse-primary": "#834e68",
+                        "off-white": "#fcf9f4",
+                        "surface-container-lowest": "#0e0e0e",
+                        "plum-muted": "#2d282a",
+                        "on-tertiary-container": "#ffcae1",
+                        "secondary": "#cdc4c7",
+                        "on-tertiary-fixed-variant": "#683750",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "secondary-container": "#504a4c",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#f6b4d2",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#eae0e2",
+                        "primary-fixed": "#ffd8e8",
+                        "outline": "#9c8d92",
+                        "on-surface-variant": "#d4c2c8",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#342f31",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#350c23",
+                        "on-primary-fixed-variant": "#683750",
+                        "surface-container-low": "#1c1b1b",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#1f1a1c",
+                        "charcoal-deep": "#121212",
+                        "on-primary": "#4e2139",
+                        "primary": "#f6b4d1",
+                        "surface-bright": "#393939",
+                        "primary-fixed-dim": "#f6b4d1",
+                        "tertiary-fixed": "#ffd8e8",
+                        "inverse-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "lavender-soft": "#d4c2c8",
+                        "surface-tint": "#f6b4d1",
+                        "on-secondary-container": "#c2b9bc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "80px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-overlay {
+            background: rgba(28, 27, 27, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .canvas-grid {
+            background-size: 20px 20px;
+            background-image: radial-gradient(circle, #504348 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-charcoal-deep text-on-surface font-body-md text-body-md antialiased overflow-hidden flex h-screen">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-charcoal-deep flex flex-col py-gutter px-4 bg-surface-container dark:bg-surface-container-low border-r border-plum-muted/20 z-50">
+<div class="mb-stack-lg flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-plum-muted/50">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of an elegant fashion model in a moody, low-key lighting studio setup. The lighting is cinematic, highlighting sophisticated features against a deep charcoal background with subtle plum color grading. The image conveys luxury, modern noir aesthetics, and editorial fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmiRqVzH7juS5Cc2jAVLfwA0P_kuyJUFFJUVlCVNl9L6t7FtTsE09CnrCIfghb6GnoBsOWsUCR39GcDwE8leM-fOOEuYjUNwfIYGtVbz2Ffhm8UAUSBQN1ER-gJ4Vfk2te_FNVAdTGW11G0W5K10zauVh5qUyy5T_OFdrdmIKMvt70o8FD4yFzo946AzOdoA2zY_2-PgOaU0Y2-TojVgpcAn_EpnvbAW9obzAKkJ0Cmq9GT8XaMMhVhg"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-plum-accent dark:text-primary tracking-tight leading-tight">WearWell</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Midnight Sanctuary</p>
+</div>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:bg-plum-accent/5 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:bg-plum-accent/5 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">checkroom</span>
+<span class="font-label-md text-label-md">Wardrobe</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary font-bold border-r-4 border-plum-accent bg-plum-accent/10 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">app_registration</span>
+<span class="font-label-md text-label-md">Outfit Builder</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:bg-plum-accent/5 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-label-md text-label-md">AI Recommendations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:bg-plum-accent/5 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:bg-plum-accent/5 hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex h-screen overflow-hidden">
+<!-- Center Canvas Area -->
+<div class="flex-1 flex flex-col p-gutter relative">
+<!-- Header Actions -->
+<div class="flex justify-between items-center mb-stack-md z-10">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Outfit Canvas</h2>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-full border border-lavender-soft/20 text-on-surface font-label-md text-label-md hover:bg-plum-accent/5 transition-colors duration-200">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                        AI Suggest Match
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-full bg-plum-accent text-off-white font-label-md text-label-md hover:opacity-90 transition-opacity duration-200">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Outfit
+                    </button>
+</div>
+</div>
+<!-- Drag & Drop Canvas -->
+<div class="flex-1 border-2 border-dashed border-outline-variant rounded-xl canvas-grid relative overflow-hidden flex items-center justify-center bg-surface/50">
+<div class="text-center opacity-50 pointer-events-none flex flex-col items-center">
+<span class="material-symbols-outlined text-display-lg text-outline-variant mb-2">add_circle</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Drag items from your wardrobe here</p>
+</div>
+<!-- Example Dropped Item (Absolute Positioning) -->
+<div class="absolute top-1/4 left-1/3 w-48 h-64 bg-plum-muted rounded-lg shadow-[0_0_20px_rgba(212,194,200,0.05)] border border-lavender-soft/10 overflow-hidden cursor-move hover:border-lavender-soft/30 transition-colors group">
+<img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A high-end editorial shot of a tailored, double-breasted charcoal blazer isolated on a very dark, moody background. The fabric texture is rich and detailed, illuminated by a soft, directional light that creates a subtle glow, fitting a midnight boutique aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeWTZQZvfHUjdnAW_KE1KaLHEKG7PhLbbLaOB2wRCGmEBZMj6goSF9reTqXhh6dfIy6NI4dnqkxTYqPeUP8mK3_IPPRT_qCEKDP63lWYU-C_AGTU-fQmln86GITeCazW_PtqOmAnCi6PK22ZjUT5KBugagnU2iCwrjWe29xJYvy0nQ9ugo941YRBox0L47CEiMzoNFeb4B5SbAbEq_gI95eWGwuGzexkFK3I5OAptf2npLJ-ue3wyGKA"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface-container/80 backdrop-blur-sm flex items-center justify-center text-on-surface opacity-0 group-hover:opacity-100 transition-opacity hover:text-error">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Side Panel: Wardrobe -->
+<aside class="w-80 h-full border-l border-plum-muted/20 bg-surface-container-low flex flex-col">
+<div class="p-gutter border-b border-plum-muted/20 glass-overlay sticky top-0 z-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">Your Wardrobe</h3>
+<!-- Filters -->
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full bg-plum-accent text-off-white font-label-sm text-label-sm border border-transparent">All</button>
+<button class="px-4 py-1.5 rounded-full bg-plum-muted text-on-surface-variant font-label-sm text-label-sm border border-lavender-soft/20 hover:border-lavender-soft/50 transition-colors">Tops</button>
+<button class="px-4 py-1.5 rounded-full bg-plum-muted text-on-surface-variant font-label-sm text-label-sm border border-lavender-soft/20 hover:border-lavender-soft/50 transition-colors">Bottoms</button>
+<button class="px-4 py-1.5 rounded-full bg-plum-muted text-on-surface-variant font-label-sm text-label-sm border border-lavender-soft/20 hover:border-lavender-soft/50 transition-colors">Shoes</button>
+</div>
+</div>
+<!-- Wardrobe Grid -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+<!-- Item Card -->
+<div class="group bg-plum-muted rounded-xl overflow-hidden border border-lavender-soft/10 hover:border-lavender-soft/30 transition-all duration-300 cursor-grab active:cursor-grabbing flex items-center gap-4 p-3 relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A beautifully styled pair of high-waisted, wide-leg tailored trousers in a deep midnight blue, laid flat against a dark, textured background. Lighting is soft and focused, emphasizing the drape and quality of the fabric in a modern noir setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIU1D75HZ087WUTaGXXXpKaiNbrz1g7X7KFAEmjFHoeg8yqoG9H7AqX3ycQ6OGNjC5MLUHzqP4gS3iad-4ZMNeyUUnwIubTNfCDnJ14PCQJ8rrl3ZAiUSJoD9-w3uoGtn51fpUUCdKnumAwXB-Gcr4iU702pf4AWaUXlVlOdLCZGfWVwp2saSdBuOsnrFcihjVF2bE34irkXKg8_1V6Cn6S_FUKTPkywpgFIlvE8xFfbhC-I2Q4365dA"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Tailored Trousers</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Bottoms</p>
+</div>
+<div class="absolute inset-0 bg-plum-accent/0 group-hover:bg-plum-accent/5 transition-colors pointer-events-none rounded-xl"></div>
+</div>
+<!-- Item Card -->
+<div class="group bg-plum-muted rounded-xl overflow-hidden border border-lavender-soft/10 hover:border-lavender-soft/30 transition-all duration-300 cursor-grab active:cursor-grabbing flex items-center gap-4 p-3 relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="An elegant, minimalist leather crossbody bag in a rich plum color, photographed against a dark charcoal slate background. The lighting catches the subtle grain of the leather and metallic hardware, exuding luxury and evening sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgPSZIREddu0cYQJKlVcOplI2TPNn9Tl1TCdeMbqq-sEv5ABCDpUoE3YHstW1RRkkoe4fLdcdiBn1geA4P3ljUTtNp3wV76z2ZIHZVLopUUi55wc653s5PGxN1iK92dDMlf6ch3zfJhmPohPGDbCYQqLfg3Vk1MROv9qG_BgFvNVWNgnXzrmmE6RW8Jaxavi4vgamsHezp7f7N8PrYggOjqxI97aIdHgn65MwYxw5YLjTAQJ5CFelB8g"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Crossbody Bag</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Accessories</p>
+</div>
+<div class="absolute inset-0 bg-plum-accent/0 group-hover:bg-plum-accent/5 transition-colors pointer-events-none rounded-xl"></div>
+</div>
+<!-- Item Card -->
+<div class="group bg-plum-muted rounded-xl overflow-hidden border border-lavender-soft/10 hover:border-lavender-soft/30 transition-all duration-300 cursor-grab active:cursor-grabbing flex items-center gap-4 p-3 relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A sleek, long-sleeved silk blouse in a muted taupe color, hanging elegantly against a dark, atmospheric background. The soft folds of the silk catch a gentle, moody light, fitting the elegant dark mode aesthetic of a premium boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-3qLTnfZefsorsy27x0pOBsIdnbRiFmjzInSmjrdY5Ku8v1vUxHhJOpU89l4HVndhJuN91KCvieTCIDuX8RAqQ0eAtuEmK-ymiBTgqh7QOtLeS_mN5XO7ugcMZ69O7ERNJ3DrxEokY0tjBtYbL513LSUn341iE-tS1plZ5LCwFRkrdMe-1FWLoOshMqy8TsDbu3SSylfL2bzNOjdjsCl8_tgzxsr0tqLowLeJAKlgorbZnNLKJTl-GA"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Silk Blouse</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Tops</p>
+</div>
+<div class="absolute inset-0 bg-plum-accent/0 group-hover:bg-plum-accent/5 transition-colors pointer-events-none rounded-xl"></div>
+</div>
+<!-- Item Card -->
+<div class="group bg-plum-muted rounded-xl overflow-hidden border border-lavender-soft/10 hover:border-lavender-soft/30 transition-all duration-300 cursor-grab active:cursor-grabbing flex items-center gap-4 p-3 relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A pair of sharp, pointed-toe stiletto ankle boots in matte black suede. They are placed on a dark, slightly reflective surface in a low-key lighting setup that emphasizes their sleek silhouette and luxurious texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM7Q36MBAyhXmCUBF5DSbkEPR1zAne8RkEv8JbWiShar3ZAi4Jo26kmIQ4OCkGKjlFps9HG73pVT7_XF-t9GoxJtnMYBEWq9oiMpr_AJUFJ-AvLUJHpQ1aJtxC_--t5FoiK6ARcmhf5bRXbeuFyZmsDo2UFlTwen_MY81z1UrM8puRXxDF_lS6ZCDhOOQuB7aRTkZkHAqM4twMgEpaQ9-ETCn55IWdEHF-LQ4h7Jc7c_pyNS_y5iEY8g"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Suede Booties</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Shoes</p>
+</div>
+<div class="absolute inset-0 bg-plum-accent/0 group-hover:bg-plum-accent/5 transition-colors pointer-events-none rounded-xl"></div>
+</div>
+</div>
+</aside>
+</main>
+<style>
+        /* Custom Scrollbar for dark theme */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #353534;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #504348;
+        }
+    </style>
+</body></html>

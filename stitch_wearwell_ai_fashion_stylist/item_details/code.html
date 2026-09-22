@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Item Detail - WearWell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#d596b3",
+                        "on-secondary-fixed": "#1f1b10",
+                        "surface-container-low": "#f6f3ee",
+                        "outline-variant": "#d4c2c8",
+                        "surface-container-highest": "#e5e2dd",
+                        "surface-tint": "#834e68",
+                        "secondary-fixed": "#eae2d0",
+                        "on-secondary-fixed-variant": "#4b4639",
+                        "secondary-fixed-dim": "#cec6b5",
+                        "tertiary-fixed-dim": "#bbcbba",
+                        "surface-variant": "#e5e2dd",
+                        "surface-dim": "#dcdad5",
+                        "surface-container": "#f0ede9",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#f6b4d1",
+                        "on-primary-fixed-variant": "#68374f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#111f14",
+                        "inverse-surface": "#31302d",
+                        "surface-bright": "#fcf9f4",
+                        "surface-container-high": "#ebe8e3",
+                        "secondary-container": "#eae2d0",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#f6b4d1",
+                        "secondary": "#645e50",
+                        "tertiary-fixed": "#d7e7d5",
+                        "primary-container": "#5d2e46",
+                        "on-tertiary-container": "#9dad9c",
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-surface": "#1c1c19",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf9f4",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#6a6456",
+                        "outline": "#827378",
+                        "on-tertiary-fixed-variant": "#3c4a3d",
+                        "primary": "#431830",
+                        "on-primary-fixed": "#350c23",
+                        "tertiary-container": "#334134",
+                        "primary-fixed": "#ffd8e7",
+                        "on-surface-variant": "#504348",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#1d2b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "stack-md": "24px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar (Web) -->
+<nav class="hidden md:flex w-full top-0 bg-surface border-b border-surface-container-highest shadow-sm z-50 sticky">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full">
+<div class="font-display-lg text-display-lg font-bold text-primary">WearWell</div>
+<div class="flex gap-stack-md font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105 active:scale-95 transition-all" href="#">Home</a>
+<a class="text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 hover:scale-105 active:scale-95 transition-all" href="#">Wardrobe</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105 active:scale-95 transition-all" href="#">Outfit Builder</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:scale-105 active:scale-95 transition-all" href="#">AI Recommendations</a>
+</div>
+<div class="flex gap-4 text-primary">
+<button class="hover:text-primary-container transition-colors hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="hover:text-primary-container transition-colors hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Mobile Bottom Nav Adapter - simplified for detail page) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant flex justify-around py-4 z-50 shadow-md">
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="checkroom">checkroom</span>
+<span class="font-label-sm text-label-sm mt-1">Wardrobe</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-label-sm text-label-sm mt-1">Build</span>
+</a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg pb-[100px] md:pb-stack-lg">
+<!-- Breadcrumb / Back Action (Task-focused context) -->
+<div class="mb-stack-md flex items-center gap-2">
+<a class="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-lg mr-1 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Back to Wardrobe
+            </a>
+</div>
+<!-- Asymmetric Bento-style Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Left Panel: Large Image -->
+<div class="lg:col-span-7 relative group">
+<div class="rounded-[24px] overflow-hidden bg-surface-container-low aspect-[3/4] relative shadow-[0_30px_60px_-15px_rgba(67,24,48,0.04)]">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out" data-alt="A high-quality, editorial-style flat lay photograph of a minimalist sage green linen button-down shirt. The shirt is beautifully folded on a pristine, textured cream background. Soft, diffused, high-key natural lighting highlights the organic texture of the linen fabric. The aesthetic is clean, sophisticated, and serene, fitting a premium digital fashion concierge app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCURjAi7EL2er2N64JPZ8PFU2uV068htGLJa5gT0J6T_sUgQHTVHjQdfYDa9l4jgH4pcsR5yTBCAs0BwFA8myM555qqkIKoQUs0wpaM7tY_9o_kim2CoK2ZCiwVL17uRZKjdAy3583jm_s8EbCj55vz1nngE4v6tDKbDK-3_VSg0HN80-4iSa7Cz5ju__611m56JelFbxclvTcHxMyAb7yxbGXg8ZkE0d_wfsrQaNn4SfEfS0Pcpehfw"/>
+<!-- Favorite Overlay -->
+<button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-3 rounded-full text-on-surface-variant hover:text-primary hover:bg-surface shadow-sm transition-all hover:scale-105 active:scale-95 z-10">
+<span class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+<!-- Thumbnails (Optional extra detail) -->
+<div class="flex gap-4 mt-4">
+<div class="w-20 h-24 rounded-lg overflow-hidden border-2 border-primary cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A close-up detail shot focusing on the collar and natural shell buttons of a sage green linen shirt. Soft, airy lighting emphasizing the textile weave and high-quality stitching. Minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWY1bnKOFt2AJAZJtzCaa9GV3YOgo8AftLzf3QJHxzOEFwLFpERx5bO2k4HTj-_RkUznxVRv7Ax2GJlpNCJJQgUFoY7MxJl4FEDtHxzpeDYP6dIpJYYMrtpr5R-gWuAruFTaQ70AGqEzaPyNOYP2oo-9UIN2tJrS8IXhAh47aBS0pl0qCnCwK7xk88twskzlJ0Dm4pyD9jZHjpU6lof2CU0uzwQDuAuER91vFm_BfNl7avOAye3vb_Jw"/>
+</div>
+<div class="w-20 h-24 rounded-lg overflow-hidden border border-surface-container-highest cursor-pointer hover:border-outline-variant transition-colors">
+<img class="w-full h-full object-cover" data-alt="A detailed macro shot showing the cuff of a sage green linen shirt slightly rolled up. The lighting is soft and bright, casting gentle shadows that reveal the fabric's organic texture against a soft white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA_YGqDpVIWTWSxjoJff-XKVDbtcXZGvQgn4tOXzSDI07mvnU_nkuky9EwPPUabBkLGc_L4GXvbACK584_wqs2QpzdKDBC-cM2OKVn5WDCCmKKnBvtzwOLHdggointkZl4tyFmK2AHel_2XLrO2BWilaVMlrUe9JPcFomKe7ySTDuhKxcgNzBzvSTozDaklpxU1YMFj0_h_pu7PO1pJcQBBlQ1WQ8vFxs711H7xoqbiswnpgc9YlTGAQ"/>
+</div>
+</div>
+</div>
+<!-- Right Panel: Details -->
+<div class="lg:col-span-5 flex flex-col justify-start py-4">
+<!-- Header Info -->
+<div class="mb-stack-lg">
+<h1 class="font-headline-md text-headline-md md:font-display-lg md:text-display-lg text-on-background mb-2">Sage Linen Shirt</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Relaxed fit button-down</p>
+</div>
+<!-- Specs Grid -->
+<div class="grid grid-cols-2 gap-stack-sm mb-stack-lg bg-surface-container-low p-6 rounded-[24px]">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Color</span>
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded-full bg-[#9dad9c] border border-outline-variant"></span>
+<span class="font-body-md text-body-md">Sage Green</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Category</span>
+<span class="font-body-md text-body-md">Tops &amp; Shirts</span>
+</div>
+<div class="flex flex-col mt-4">
+<span class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Fabric</span>
+<span class="font-body-md text-body-md">100% Organic Linen</span>
+</div>
+<div class="flex flex-col mt-4">
+<span class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Season</span>
+<span class="font-body-md text-body-md">Spring/Summer</span>
+</div>
+</div>
+<!-- Tags / Taxonomy -->
+<div class="mb-stack-lg">
+<h3 class="font-label-sm text-label-sm text-outline mb-3 uppercase tracking-wider">Style &amp; Occasion</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 rounded-full bg-surface border border-tertiary-fixed-dim text-on-surface-variant font-label-md text-label-md">Minimalist</span>
+<span class="px-4 py-1.5 rounded-full bg-surface border border-tertiary-fixed-dim text-on-surface-variant font-label-md text-label-md">Office</span>
+<span class="px-4 py-1.5 rounded-full bg-surface border border-tertiary-fixed-dim text-on-surface-variant font-label-md text-label-md">Casual Weekend</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-auto flex flex-col gap-4 pt-stack-md border-t border-surface-container-highest">
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-xl font-label-md text-label-md hover:bg-primary-container transition-colors shadow-[0_4px_14px_0_rgba(67,24,48,0.2)] hover:shadow-[0_6px_20px_rgba(67,24,48,0.25)] hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                        Add to Outfit
+                    </button>
+<button class="w-full bg-secondary-fixed/50 border border-secondary text-on-secondary-fixed py-4 px-6 rounded-xl font-label-md text-label-md hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Suggest Combinations
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

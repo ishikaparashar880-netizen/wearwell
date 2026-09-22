@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WearWell - My Wardrobe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#d596b3",
+                      "on-secondary-fixed": "#1f1b10",
+                      "surface-container-low": "#f6f3ee",
+                      "outline-variant": "#d4c2c8",
+                      "surface-container-highest": "#e5e2dd",
+                      "surface-tint": "#834e68",
+                      "secondary-fixed": "#eae2d0",
+                      "on-secondary-fixed-variant": "#4b4639",
+                      "secondary-fixed-dim": "#cec6b5",
+                      "tertiary-fixed-dim": "#bbcbba",
+                      "surface-variant": "#e5e2dd",
+                      "surface-dim": "#dcdad5",
+                      "surface-container": "#f0ede9",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#f6b4d1",
+                      "on-primary-fixed-variant": "#68374f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#111f14",
+                      "inverse-surface": "#31302d",
+                      "surface-bright": "#fcf9f4",
+                      "surface-container-high": "#ebe8e3",
+                      "secondary-container": "#eae2d0",
+                      "on-background": "#1c1c19",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#f6b4d1",
+                      "secondary": "#645e50",
+                      "tertiary-fixed": "#d7e7d5",
+                      "primary-container": "#5d2e46",
+                      "on-tertiary-container": "#9dad9c",
+                      "inverse-on-surface": "#f3f0eb",
+                      "on-surface": "#1c1c19",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface": "#fcf9f4",
+                      "on-error": "#ffffff",
+                      "background": "#fcf9f4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#6a6456",
+                      "outline": "#827378",
+                      "on-tertiary-fixed-variant": "#3c4a3d",
+                      "primary": "#431830",
+                      "on-primary-fixed": "#350c23",
+                      "tertiary-container": "#334134",
+                      "primary-fixed": "#ffd8e7",
+                      "on-surface-variant": "#504348",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#1d2b1f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "48px",
+                      "container-max": "1280px",
+                      "section-gap": "80px",
+                      "stack-md": "24px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "12px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- Side NavBar -->
+<nav class="bg-surface-container dark:bg-surface-container-low border-r border-outline-variant shadow-md fixed left-0 top-0 flex flex-col h-full py-stack-md w-64 z-50">
+<div class="px-gutter">
+<h1 class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-fixed-dim mb-1">WearWell</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mb-stack-md">Your Digital Concierge</p>
+</div>
+<div class="flex-1 overflow-y-auto mt-4 space-y-1 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-primary/10 dark:hover:bg-primary-container/20 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container rounded-lg mx-2 my-1 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined fill text-[20px]">checkroom</span>
+<span class="font-label-md text-label-md">Wardrobe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-primary/10 dark:hover:bg-primary-container/20 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_fix_high</span>
+<span class="font-label-md text-label-md">Outfit Builder</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-primary/10 dark:hover:bg-primary-container/20 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="font-label-md text-label-md">AI Recommendations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-primary/10 dark:hover:bg-primary-container/20 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-container-high rounded-lg mx-2 my-1 hover:bg-primary/10 dark:hover:bg-primary-container/20 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</div>
+<div class="px-gutter mt-auto pt-4">
+<button class="w-full bg-primary text-on-primary py-3 rounded-[16px] font-label-md text-label-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                Build New Outfit
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 h-full overflow-y-auto bg-surface pb-section-gap">
+<div class="max-w-container-max mx-auto px-gutter py-stack-md pt-section-gap">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">My Wardrobe</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and curate your personal collection.</p>
+</div>
+<button class="bg-secondary/10 text-primary px-6 py-3 rounded-[16px] font-label-md text-label-md hover:bg-secondary/20 transition-colors flex items-center gap-2 border border-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                    Add Item
+                </button>
+</div>
+<!-- Filters & Controls -->
+<div class="flex flex-wrap items-center gap-4 mb-stack-md border-b border-surface-variant pb-4">
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors">All</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors">Tops</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors">Bottoms</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors">Shoes</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-colors">Accessories</button>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Filter by Style</span>
+</div>
+</div>
+<!-- Bento Grid Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Item Card 1 -->
+<div class="bg-white rounded-[24px] overflow-hidden shadow-[0_4px_30px_rgba(67,24,48,0.04)] hover:shadow-[0_8px_40px_rgba(67,24,48,0.08)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A pristine white silk blouse elegantly draped on a minimal wooden hanger against a soft cream background. The lighting is diffused and bright, highlighting the delicate texture of the silk in a light-mode, minimalist e-commerce style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYKOQPOSaZXWyoipx2tZRi4zs1ySIVbHtFTkxs7INb_b8guIDX82pDs0Z2q0KLuWi7GxEUXVZXXuqQaILOXz7GQ_s4Q9UtZP77NtkXDzJdWRA6TLlXk3Ojem55DiywKAcRM36g3lVdj2X1oSxEPjZyFO7hj3ZnvfrELIJ2N8Dlpjlv8Rr9tb6hiJh1ckeCAfAV9IIkyTXfuCNq8RwWv2QH1sq6NoIgcMelczAMKhgFB9vA5h79CsnZ0A"/>
+<div class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-[18px]">favorite</span>
+</div>
+</div>
+<div class="p-4 pt-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Silk Classic Blouse</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-sm">Top</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Minimalist • Formal</p>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-white rounded-[24px] overflow-hidden shadow-[0_4px_30px_rgba(67,24,48,0.04)] hover:shadow-[0_8px_40px_rgba(67,24,48,0.08)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-waisted wide-leg trousers in a soft beige linen fabric, laid flat on a pristine white surface. Natural, soft sunlight casts gentle shadows, emphasizing the organic texture of the linen in a sophisticated, minimalist fashion photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC16-5Q1f_PHbGUcV-pi6f2CzM8A1TEl3tlRNOOw4ZLZNflRZBhkYxP5_h5DPvJ53p9KvfOqABywRz-JvWDi0GZwia-gqOGxkFdJnwm-_-0ztGs11xBhfmuKzHYtNCLNlJ1Q_rYeEtojiC0WLqX2heCHSVwCwn2WOPnQauZ4FjQbYbsorS032YyT8CqPP8wFCxVjD6AEQCfTbHXUeXuMg8TuyGTjYheMEGcXPi35Iw9CHYeuxByHNsCaQ"/>
+<div class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-outline text-[18px]">favorite</span>
+</div>
+</div>
+<div class="p-4 pt-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Linen Wide-Leg</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-sm">Bottom</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Casual • Summer</p>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-white rounded-[24px] overflow-hidden shadow-[0_4px_30px_rgba(67,24,48,0.04)] hover:shadow-[0_8px_40px_rgba(67,24,48,0.08)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer border border-surface-container">
+<div class="relative aspect-[3/4] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A pair of sleek, modern leather loafers in deep burgundy. The shoes are placed on a minimal stone plinth against a light gray background. Studio lighting creates subtle highlights on the polished leather, conveying premium quality and a clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-1fRANIqca7kh4fy52p5hWG97nyKx8nl2rp1KnyQBUPJy8IG_5Stz2T0uqhJVrpBc577dYLcJcJYJA8LxrXQtu9lGE8XnEkmbgzk-qS8PhjjIXknTgVEu1pvJePbql0OSPGGf-cmQWPG4HG87vrjTbICLHFgziEq5XkXsNoBhBcWhbB-PhMFkff6Pmt28sa-gVIDix37i5F5HpAjiKD5HnP8W-yAzTkKlp3zLJAISyeBFM1JA3GMs4Q"/>
+<div class="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-outline text-[18px]">favorite</span>
+</div>
+</div>
+<div class="p-4 pt-3">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Burgundy Loafers</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-sm">Shoes</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Smart Casual • Leather</p>
+</div>
+</div>
+<!-- Add New Item Card (Ghost) -->
+<div class="rounded-[24px] border-2 border-dashed border-outline-variant hover:border-primary bg-surface-container-low hover:bg-surface-container transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center min-h-[300px]">
+<div class="h-16 w-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-primary">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Upload New Item</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

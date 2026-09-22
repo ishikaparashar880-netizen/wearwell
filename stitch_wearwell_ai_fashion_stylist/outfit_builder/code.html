@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WearWell - Outfit Builder</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#d596b3",
+                        "on-secondary-fixed": "#1f1b10",
+                        "surface-container-low": "#f6f3ee",
+                        "outline-variant": "#d4c2c8",
+                        "surface-container-highest": "#e5e2dd",
+                        "surface-tint": "#834e68",
+                        "secondary-fixed": "#eae2d0",
+                        "on-secondary-fixed-variant": "#4b4639",
+                        "secondary-fixed-dim": "#cec6b5",
+                        "tertiary-fixed-dim": "#bbcbba",
+                        "surface-variant": "#e5e2dd",
+                        "surface-dim": "#dcdad5",
+                        "surface-container": "#f0ede9",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#f6b4d1",
+                        "on-primary-fixed-variant": "#68374f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#111f14",
+                        "inverse-surface": "#31302d",
+                        "surface-bright": "#fcf9f4",
+                        "surface-container-high": "#ebe8e3",
+                        "secondary-container": "#eae2d0",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#f6b4d1",
+                        "secondary": "#645e50",
+                        "tertiary-fixed": "#d7e7d5",
+                        "primary-container": "#5d2e46",
+                        "on-tertiary-container": "#9dad9c",
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-surface": "#1c1c19",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface": "#fcf9f4",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#6a6456",
+                        "outline": "#827378",
+                        "on-tertiary-fixed-variant": "#3c4a3d",
+                        "primary": "#431830",
+                        "on-primary-fixed": "#350c23",
+                        "tertiary-container": "#334134",
+                        "primary-fixed": "#ffd8e7",
+                        "on-surface-variant": "#504348",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#1d2b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "24px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "stack-md": "24px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    },
+                    "boxShadow": {
+                        "soft": "0 4px 30px rgba(67, 24, 48, 0.04)",
+                        "soft-hover": "0 10px 40px rgba(67, 24, 48, 0.08)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Drag and Drop utility styles */
+        .draggable-item { cursor: grab; }
+        .draggable-item:active { cursor: grabbing; }
+        .drop-zone { border: 2px dashed transparent; transition: border-color 0.3s; }
+        .drop-zone.drag-over { border-color: var(--tw-colors-primary); background-color: var(--tw-colors-surface-container-high); }
+        
+        /* Custom scrollbar for wardrobe panel */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--tw-colors-outline-variant); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--tw-colors-outline); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex overflow-hidden">
+<!-- SideNavBar (Desktop Only based on prompt "Desktop workspace") -->
+<nav class="hidden md:flex flex-col h-screen w-64 left-0 top-0 bg-surface-container border-r border-outline-variant shadow-md py-stack-md flex-shrink-0 z-20">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-display-lg text-display-lg font-bold text-primary mb-1">WearWell</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Your Digital Concierge</p>
+</div>
+<ul class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-1">
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">checkroom</span>
+<span class="font-label-md text-label-md">Wardrobe</span>
+</a>
+</li>
+<!-- ACTIVE TAB -->
+<li>
+<a class="flex items-center px-4 py-3 bg-primary text-on-primary rounded-lg mx-2 my-1 transition-all duration-300" href="#">
+<span class="material-symbols-outlined fill mr-3">auto_fix_high</span>
+<span class="font-label-md text-label-md">Outfit Builder</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+<span class="font-label-md text-label-md">AI Recommendations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">favorite</span>
+<span class="font-label-md text-label-md">Favorites</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto px-gutter pt-stack-md border-t border-outline-variant">
+<a class="flex items-center justify-between group" href="#">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden mr-3">
+<img alt="User profile picture" class="w-full h-full object-cover" data-alt="A close up portrait of a sophisticated woman with neutral makeup and pulled back hair, set against a soft cream background. Professional studio lighting highlights the textures of her subtle clothing, aligning perfectly with a modern, elegant light-mode e-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLVbnVHc9o_mufdVNT4NZhXysPI4IrB3KRBcTAlmsrYYQWlB_Dg0rU5SEp3tU6_thCRNqSdvlAe7cPKBZ6Qo0qNVOCJOgXaI3LVetsN1R_QWW0A0Gi5mREAPSe3971PIRn1vYMJQVNZC16cYBfaKDyvZJbZzR4mLjkEePigDAqe66r0-ZmFfrDHnBNFg7C6dGgB8RGZUTJ1auiwE4y0PxzadogrvsWbi-PNsQX0gwTcnYyPI7TUdqYXg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Profile</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden bg-surface-bright relative">
+<!-- Header Actions -->
+<header class="flex justify-between items-center px-gutter py-6 bg-surface-bright z-10 border-b border-surface-container-highest/50">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Curate Your Look</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Drag and drop items to build a seamless outfit.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center justify-center px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-[16px] hover:bg-surface-container-highest transition-colors shadow-soft">
+<span class="material-symbols-outlined mr-2 text-[20px]">psychology</span>
+                    AI Suggest Match
+                </button>
+<button class="flex items-center justify-center px-6 py-3 bg-primary text-on-primary font-label-md text-label-md rounded-[16px] hover:bg-primary-fixed-dim transition-colors shadow-soft">
+<span class="material-symbols-outlined mr-2 text-[20px]">save</span>
+                    Save Outfit
+                </button>
+</div>
+</header>
+<!-- Workspace Layout -->
+<div class="flex-1 flex overflow-hidden p-gutter gap-gutter max-w-container-max mx-auto w-full">
+<!-- Central Canvas (Flat-lay / Mannequin) -->
+<div class="flex-1 flex flex-col bg-surface rounded-[24px] shadow-soft border border-surface-container-highest overflow-hidden relative drop-zone" id="outfit-canvas">
+<!-- Canvas Tooling -->
+<div class="absolute top-4 right-4 flex gap-2 z-10">
+<button class="w-10 h-10 rounded-full bg-surface-bright shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Clear Canvas">
+<span class="material-symbols-outlined">delete_sweep</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-bright shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" title="Undo">
+<span class="material-symbols-outlined">undo</span>
+</button>
+</div>
+<!-- Canvas Area -->
+<div class="flex-1 flex items-center justify-center p-stack-lg relative bg-[#f9f7f3]">
+<!-- Background Grid/Pattern for Flat-lay vibe -->
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(var(--tw-colors-primary) 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- Placeholder Text if empty -->
+<div class="text-center z-10 pointer-events-none opacity-50 flex flex-col items-center">
+<span class="material-symbols-outlined text-display-lg mb-4 text-outline">dry_cleaning</span>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">Drop items here</p>
+</div>
+<!-- Example Placed Items (Static for UI demonstration) -->
+<!-- In a real app these would be dynamically added -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 z-20 w-48 h-64 draggable-item hover:scale-[1.02] transition-transform shadow-soft hover:shadow-soft-hover rounded-xl overflow-hidden bg-surface-bright border border-surface-container-highest cursor-move">
+<img alt="White Linen Shirt" class="w-full h-full object-contain p-4" data-alt="A meticulously styled, high-quality photograph of a minimalist white linen button-down shirt folded elegantly on a soft cream surface. Soft, diffused top-down studio lighting creates delicate shadows, emphasizing the natural texture of the fabric. The aesthetic is clean, luxurious, and perfectly suited for a high-end fashion e-commerce platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmT-NhqOQLyR1s94R3NdLC7KTRyzBWl8BvzJJRswkbnnoHK278-Vrwsoa5G8PtObyXmLkHaisAzsWLN9yuWmt2UsmLknjq2dHhxJ_59QZU0M-ryrQQbro4FVVwsBdoNC3nMFtNUcOdfny70XEHXorTtPiJdXEY5KqwhsQoNWe6qWxsOsEiTa4ZFzLQ0kQsCkgvodV5paaKcCd5VJYpyLRb_vUkAKIZ4LKFoECLtnY_omPbVdjf9DVn7Q"/>
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 hover:opacity-100 transition-opacity">
+<button class="w-6 h-6 bg-surface-bright rounded-full flex items-center justify-center text-error shadow-sm"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Panel: Wardrobe Items -->
+<div class="w-80 flex flex-col bg-surface rounded-[24px] shadow-soft border border-surface-container-highest overflow-hidden">
+<div class="p-4 border-b border-surface-container-highest bg-surface-bright">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Your Wardrobe</h3>
+<!-- Filters -->
+<div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
+<button class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm whitespace-nowrap border border-transparent">All</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-bright text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap border border-outline-variant hover:bg-surface-container transition-colors">Tops</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-bright text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap border border-outline-variant hover:bg-surface-container transition-colors">Bottoms</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-bright text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap border border-outline-variant hover:bg-surface-container transition-colors">Shoes</button>
+</div>
+</div>
+<!-- Draggable Items List -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-4 bg-surface-container-low">
+<div class="grid grid-cols-2 gap-3">
+<!-- Item 1 -->
+<div class="aspect-[3/4] bg-surface-bright rounded-xl shadow-sm border border-surface-container-highest p-2 flex flex-col items-center justify-center draggable-item hover:shadow-soft transition-all hover:-translate-y-1 group relative cursor-grab">
+<img alt="Beige Trousers" class="w-full h-24 object-contain mb-2" data-alt="A clear, bright product photo of a pair of tailored beige trousers neatly laid flat against a pristine white background. The soft lighting emphasizes the precise stitching and premium fabric quality. The overall mood is sophisticated, minimal, and aligns with an editorial luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHlIqwmjKKe_xl2K-PVj0q4L1Zg3B-a0dg6RyEpiwSqvdy7QsBe_apn79gtfh54laOVVCu0HVaHDIV-APt49Hul47QzwMPMztuaHA_4H2eqremodQqulp8ExodFhP8l-uwDXdWNdEO6nxqfMJEypjGocgdnu3skgotMQI9vYmElVEiU28Ue9tCOHHHR07V9v5oJL2-XD0H2AsWA2J-ZoEyAc40MYbh78Jda_MuNqrSGv-8Tk5RWGIyWA"/>
+<p class="font-label-sm text-label-sm text-on-surface text-center truncate w-full">Tailored Trousers</p>
+<div class="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+<!-- Item 2 -->
+<div class="aspect-[3/4] bg-surface-bright rounded-xl shadow-sm border border-surface-container-highest p-2 flex flex-col items-center justify-center draggable-item hover:shadow-soft transition-all hover:-translate-y-1 group relative cursor-grab">
+<img alt="Leather Bag" class="w-full h-24 object-contain mb-2" data-alt="A minimalist flat-lay photograph of a sleek black leather cross-body bag. The bag features subtle gold hardware and is positioned against a warm, neutral cream background. Diffused lighting creates a soft, luxurious glow, perfect for a high-end modern fashion interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCfNldJK-n3_fxiww_AunA1n9FeBveoeDjn8_meAgMQx5On1gy-czkKZ0QUs29PzeuVLpbB7N1sg-cGDXR2kNnPTgCRaVPXWR_L0btwKcYK0P5z3U6mchkD_NitRSlRUWAqn2VD30e_c_quORexVoGUlpyB_Y306x0xINK5GKXyuR4ZndrVL4PfDj-FmLgGZ3XvpLjl5sH4ZbZ61bPTi1e5s0JtBNcS-Db8Rv6zjfkQsjPRgMhItUxRQ"/>
+<p class="font-label-sm text-label-sm text-on-surface text-center truncate w-full">Crossbody Bag</p>
+<div class="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+<!-- Item 3 -->
+<div class="aspect-[3/4] bg-surface-bright rounded-xl shadow-sm border border-surface-container-highest p-2 flex flex-col items-center justify-center draggable-item hover:shadow-soft transition-all hover:-translate-y-1 group relative cursor-grab">
+<img alt="White Sneakers" class="w-full h-24 object-contain mb-2" data-alt="A clean, top-down product shot of minimalist white leather sneakers with subtle detailing. They are placed perfectly straight on a soft, off-white surface. The lighting is bright and even, casting delicate ambient shadows that enhance the clean, modern aesthetic of a luxury brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ebfZB5HWzcpCKFZyYg0Ic432Y2jXtmcnw8IxYIBt48NqAzQqFBbgh32i022EDqcakz5dxir0gbTERm8ynbZsmNSkAG1OSJh0oAUNvDVdDIria1fBRFDhUKpjmCisvePxD4odVyhokrrTjTg4X9liUmLIjnpZ8AGsm5n9qCOTbYGHmE1gBWXLIUVJkr0aZjbOEZfbNww-S1KQcdpUYkxMMbG_7o_A1L08gR7hlQg2o-hIPQzpM7A1sg"/>
+<p class="font-label-sm text-label-sm text-on-surface text-center truncate w-full">Classic Sneakers</p>
+<div class="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+<!-- Item 4 -->
+<div class="aspect-[3/4] bg-surface-bright rounded-xl shadow-sm border border-surface-container-highest p-2 flex flex-col items-center justify-center draggable-item hover:shadow-soft transition-all hover:-translate-y-1 group relative cursor-grab">
+<img alt="Silk Scarf" class="w-full h-24 object-contain mb-2" data-alt="A refined flat-lay image of a delicate, dusty rose silk scarf, beautifully draped over a pale stone surface. Soft, natural-looking window light creates gentle highlights and shadows on the fabric's folds. The composition is airy and elegant, embodying a calm, high-fashion sensibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc4qJiSKDdaPQD1ZtsCHC6HK9Ikdg01ZydFy79m4dG8Zxw1z2se4J3N1SDHSWbHlVK4DnkUraMe9-RqGqpxRi8npsiOQsnUnJ4aBGB5LqpFpSLRf4XLzXIRoliqVUJyTjzPBB4m9MU_Q3lB3Ssul-XXmIJb_sNSVVHtr19xEg794fDCfoFxsakv_BFLsdBMAsHJSnV_DNEYwmubiuKQhaSLNt1UUIjiks_ss3vO9lGlc_r3VgzOIwfYA"/>
+<p class="font-label-sm text-label-sm text-on-surface text-center truncate w-full">Silk Scarf</p>
+<div class="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple drag and drop visual feedback script
+        const canvas = document.getElementById('outfit-canvas');
+        const draggables = document.querySelectorAll('.draggable-item');
+
+        draggables.forEach(item => {
+            item.addEventListener('dragstart', () => {
+                item.classList.add('opacity-50');
+            });
+            item.addEventListener('dragend', () => {
+                item.classList.remove('opacity-50');
+            });
+        });
+
+        canvas.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            canvas.classList.add('drag-over');
+        });
+
+        canvas.addEventListener('dragleave', () => {
+            canvas.classList.remove('drag-over');
+        });
+
+        canvas.addEventListener('drop', (e) => {
+            e.preventDefault();
+            canvas.classList.remove('drag-over');
+            // In a real app, logic to clone and place item here
+        });
+    </script>
+</body></html>

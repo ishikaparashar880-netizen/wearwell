@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WearWell - Favorites</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#d596b3",
+                      "on-secondary-fixed": "#1f1b10",
+                      "surface-container-low": "#f6f3ee",
+                      "outline-variant": "#d4c2c8",
+                      "surface-container-highest": "#e5e2dd",
+                      "surface-tint": "#834e68",
+                      "secondary-fixed": "#eae2d0",
+                      "on-secondary-fixed-variant": "#4b4639",
+                      "secondary-fixed-dim": "#cec6b5",
+                      "tertiary-fixed-dim": "#bbcbba",
+                      "surface-variant": "#e5e2dd",
+                      "surface-dim": "#dcdad5",
+                      "surface-container": "#f0ede9",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#f6b4d1",
+                      "on-primary-fixed-variant": "#68374f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#111f14",
+                      "inverse-surface": "#31302d",
+                      "surface-bright": "#fcf9f4",
+                      "surface-container-high": "#ebe8e3",
+                      "secondary-container": "#eae2d0",
+                      "on-background": "#1c1c19",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#f6b4d1",
+                      "secondary": "#645e50",
+                      "tertiary-fixed": "#d7e7d5",
+                      "primary-container": "#5d2e46",
+                      "on-tertiary-container": "#9dad9c",
+                      "inverse-on-surface": "#f3f0eb",
+                      "on-surface": "#1c1c19",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface": "#fcf9f4",
+                      "on-error": "#ffffff",
+                      "background": "#fcf9f4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#6a6456",
+                      "outline": "#827378",
+                      "on-tertiary-fixed-variant": "#3c4a3d",
+                      "primary": "#431830",
+                      "on-primary-fixed": "#350c23",
+                      "tertiary-container": "#334134",
+                      "primary-fixed": "#ffd8e7",
+                      "on-surface-variant": "#504348",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#1d2b1f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "card": "24px",
+                      "button": "16px"
+              },
+              "spacing": {
+                      "stack-lg": "48px",
+                      "container-max": "1280px",
+                      "section-gap": "80px",
+                      "stack-md": "24px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "12px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(252, 249, 244, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 30px rgba(67, 24, 48, 0.04);
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(67, 24, 48, 0.08);
+        }
+        .lookbook-tile {
+            aspect-ratio: 2/3;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex">
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col bg-surface-container border-r border-outline-variant shadow-md h-screen w-64 fixed left-0 top-0 py-stack-md z-50">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-display-lg text-display-lg font-bold text-primary mb-stack-md">WearWell</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your Digital Concierge</p>
+</div>
+<ul class="flex-col space-y-2 px-4 flex-1">
+<li>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 hover:bg-primary/10 transition-all duration-300 hover:translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">home</span>
+                    Home
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 hover:bg-primary/10 transition-all duration-300 hover:translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">checkroom</span>
+                    Wardrobe
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 hover:bg-primary/10 transition-all duration-300 hover:translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">auto_fix_high</span>
+                    Outfit Builder
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 hover:bg-primary/10 transition-all duration-300 hover:translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">psychology</span>
+                    AI Recommendations
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 bg-primary text-on-primary rounded-lg mx-2 my-1 hover:bg-primary/90 transition-all duration-300 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">favorite</span>
+                    Favorites
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 hover:bg-primary/10 transition-all duration-300 hover:translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-4">person</span>
+                    Profile
+                </a>
+</li>
+</ul>
+<div class="px-gutter mt-auto">
+<button class="w-full bg-primary text-on-primary rounded-button py-3 font-label-md text-label-md hover:bg-primary/90 transition-colors">
+                Build New Outfit
+            </button>
+</div>
+</nav>
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden w-full fixed top-0 z-50 bg-surface border-b border-surface-container-highest shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile py-4">
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">WearWell</h1>
+<div class="flex space-x-4">
+<button class="text-primary hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="text-primary hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 pt-24 md:pt-12 px-margin-mobile md:px-gutter max-w-container-max mx-auto pb-stack-lg">
+<!-- Header Section -->
+<header class="mb-stack-lg">
+<h2 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-stack-sm">Saved Outfits</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Your curated collection of inspired looks. Organize, edit, and plan your wardrobe effortlessly.</p>
+</header>
+<!-- Navigation Tabs -->
+<div class="flex space-x-4 overflow-x-auto pb-4 mb-stack-md hide-scrollbar">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap hover:bg-primary/90 transition-colors">
+                All
+            </button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                College
+            </button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                Office
+            </button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors">
+                Vacation
+            </button>
+</div>
+<!-- Bento Grid Layout for Outfits -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Outfit Card 1 (Large/Featured) -->
+<article class="col-span-1 md:col-span-2 lg:col-span-2 bg-surface rounded-card soft-shadow hover-lift transition-all duration-300 overflow-hidden relative group">
+<div class="h-96 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A high-fashion editorial photograph of a stylish woman walking down a bright, minimalist city street. She wears a tailored, oversized beige blazer over a crisp white silk blouse, paired with wide-leg trousers. Soft, warm sunlight creates gentle shadows, emphasizing the elegant textures of the clothing against a clean, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3npOKQCBi8LSRG9OmgtjlC5X1Xi-oZlPqcxITm6ogOlzpNNS8OQvyS2vRZiZka6efMheYgOuZ0CfV4By2cTRqjCngkDJdunwcfosHEL_IVeBbFDxIZEFoboCRGNvfwlItkZimXlaAhwZ7wO6ZXPPMzhXJhooZIIa77ZkocWRr2bY_zdc0HHnQIVYJt1E6bxKl5SW4tQgRW9ONX0odocmIM64clnS9Bhm6zIax84ga41GJXytQOpqH6w"/>
+<!-- Quick Actions Overlay -->
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button aria-label="Share" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button aria-label="Edit" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button aria-label="Delete" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-error hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<div class="p-stack-md bg-surface">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="inline-block px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant mb-2">Office</span>
+<h3 class="font-headline-md text-headline-md text-primary">The Executive Minimalist</h3>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Perfect for crucial presentations. Combines power dressing with soft comfort.</p>
+</div>
+</article>
+<!-- Outfit Card 2 (Standard Lookbook Tile) -->
+<article class="col-span-1 bg-surface rounded-card soft-shadow hover-lift transition-all duration-300 overflow-hidden relative group lookbook-tile flex flex-col">
+<div class="flex-1 w-full relative">
+<img class="w-full h-full object-cover absolute inset-0" data-alt="A serene, soft-focus photograph of a casual, comfortable outfit laid out flat on a cream-colored textured surface. The ensemble features a relaxed-fit, chunky knit sage green sweater, light wash straight-leg denim jeans, and minimal white leather sneakers. The lighting is bright and airy, typical of a sophisticated light-mode digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_F4AFXrQMOErgFnUdln3rZ5bT8D1nx7CgCJCwcpMIsewb3Cy4vV-CYOA5feSVxBx9HaSRezK8uuyT-89r3wtVGc2SFflfBaDFgVRCXtymLlxVGE89TgBjl8wDb4iZRCCDO-U29WmO-MhDp9ad0hjHd0TkSXHa4lu9AvlxbaGVO1cwX8gD1zTm5-YBjLxCi2PZQ-OlHYCRvQDk4zaMiw44c1k_h6UiEFKyuZBDPyVqVmH4Jk1DpmZKag"/>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button aria-label="Share" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button aria-label="Edit" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<div class="p-4 bg-surface z-10">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant mb-2">College</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Library Layers</h3>
+</div>
+</article>
+<!-- Outfit Card 3 -->
+<article class="col-span-1 bg-surface rounded-card soft-shadow hover-lift transition-all duration-300 overflow-hidden relative group flex flex-col">
+<div class="h-64 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A vibrant, sun-drenched image of a flowing summer dress hung against a minimalist white stucco wall. The dress is a light, breathable linen material in a soft peach tone. A wide-brimmed straw hat and a woven tote bag are positioned nearby. The overall aesthetic is warm, inviting, and clearly evocative of a luxurious summer vacation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgA6Lf8X9xlPFqN0p7yUuFMuUIfXz8L3Xrmgh5CkeUBpNjBUtuAfnqPStJ80zWWFAyNeSGXL3F8JZ9sa9MDy7M5Bz9tcUF9OagqEKuKlt-Ib1GI633fzg6UGtc4MAfUt3NkVQePxOzWiVvXOUUMIC8bVtYO8ZEo_SnwZ4uNjed2pGseJ1bgKHeQT4nE_I-s5yJ6GQBDACkOoVmLrDfaQ78SZMYj5HMtu5WFcxRpoglL9wJOh-VxAqb8A"/>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button aria-label="Share" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button aria-label="Edit" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<div class="p-4 bg-surface">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant mb-2">Vacation</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Coastal Retreat</h3>
+</div>
+</article>
+<!-- Outfit Card 4 -->
+<article class="col-span-1 bg-surface rounded-card soft-shadow hover-lift transition-all duration-300 overflow-hidden relative group flex flex-col">
+<div class="h-64 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A detailed close-up shot of men's smart-casual attire. A beautifully tailored navy blue blazer is layered over a crisp, pale blue button-down shirt. The textures of the woven wool and smooth cotton are highlighted by soft, natural, diffused lighting. The background is completely out of focus, drawing all attention to the premium fabrics and minimal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADA1DZAk4-JJbpPl3ObKpu74oV8z9xSkdEYR7gCWpJOVJ3o4IDNgMMgIAlbJ9pi6yqNZBnzSD22kVNff6XIkLZ36c-PzFPK1dJ4sfJv-2jdZW4YpZP-Iipc5Ai3L9O3EqP-iDVcZF_x_O3ILHplB-Rx6TiqO76f7P8YSkw1XqWBqEpBleKIU1DTwsIEbfcIgPJ0JGF5E38ZguuhFqP6rUEZrd_Myb5WNXwWCsPt5QgTWAHGGFT8aqjzA"/>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button aria-label="Share" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button aria-label="Edit" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<div class="p-4 bg-surface">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant mb-2">Office</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Smart Casual Friday</h3>
+</div>
+</article>
+<!-- Outfit Card 5 -->
+<article class="col-span-1 bg-surface rounded-card soft-shadow hover-lift transition-all duration-300 overflow-hidden relative group flex flex-col">
+<div class="h-64 w-full relative">
+<img class="w-full h-full object-cover" data-alt="An artistic, flat-lay arrangement of contemporary streetwear essentials. The composition includes an oversized graphic t-shirt in washed charcoal, wide-leg utility cargo pants in an earthy olive green, and chunky technical sneakers. The lighting is slightly moody but retains a high-end editorial clarity, emphasizing the silhouettes and relaxed vibe against a clean, light grey backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD06Jq8ZKQ1NqgLzHBwVITMuTHhF6W-9kRzH-Pbolpu6LnygzfeBUhpok5--6ssdoChqTODK6AqlFWF9UeCgooHNknYtiWCwJktW6MCk-QUlrX7-974UkNvkp6umjRLoQ1n8m7RlTZsknJDWVJ7kN1yf5Ifb_n_GgcKfle6x_kNwrYtOzQ-lykv5oTQvoDgntBc3YvsBsfXnS4wssg7Zuxkg7bHlglgt64mnwznMntv04yh9d21ivhulA"/>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button aria-label="Share" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">share</span>
+</button>
+<button aria-label="Edit" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary hover:bg-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+</div>
+<div class="p-4 bg-surface">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant mb-2">College</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Campus Streetwear</h3>
+</div>
+</article>
+</div>
+</main>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>
