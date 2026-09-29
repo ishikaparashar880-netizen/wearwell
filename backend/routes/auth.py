@@ -34,4 +34,4 @@ async def login(user: UserLogin):
 
 @router.get("/me", response_model=UserProfile)
 async def get_current_user():
-    return UserProfile()
+    return UserProfile(email="sophia@wearwell.ai")
