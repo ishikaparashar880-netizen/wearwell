@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npm --prefix frontend run build",
     "install": "npm --prefix frontend install",
-    "dev": "npm --prefix frontend run dev"
+    "dev": "npm --prefix frontend run dev",
+    "deploy": "wrangler pages deploy frontend/dist --project-name=wearwell-site"
   }
 }
