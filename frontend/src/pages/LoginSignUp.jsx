@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FashionImage from '../components/FashionImage';
 
 export default function LoginSignUp() {
   const navigate = useNavigate();
@@ -10,52 +11,60 @@ export default function LoginSignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate auth login and redirect to home reccs
     navigate('/');
   };
 
   return (
-    <div className="min-h-screen bg-secondary-fixed flex items-center justify-center p-gutter">
-      <div className="w-full max-w-container-max flex flex-col md:flex-row bg-surface rounded-[24px] shadow-lg overflow-hidden min-h-[620px]">
-        {/* Left Side: Editorial Image */}
-        <div className="hidden md:block md:w-1/2 relative min-h-[550px]">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7moiK_rdPUZHWfwvKO32FzlHKlZPtBE71CiAUaG8YLT3jffLkPY13PbW0WzwkJRB2V-I4XGSzC0nL-KHXnqi5HXUs4OV5XqCbnvGJX2G1S7NbEDyG0j7BB3GIK6ZuK4tpJMYNjOSLio3tg77remyDldw9l9pEyZ0oZfCsRP9Y2HocbterPWzjoXGD5O_G9Qk_JHV92W4e6oGiGKHHMJ9u79s3j8jSC087UoNZut6kdzMwnxP3I12USw')`,
-            }}
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-4">
+      <div className="w-full max-w-5xl flex flex-col md:flex-row bg-[#141414] border border-[#D4AF37]/40 rounded-3xl shadow-2xl overflow-hidden min-h-[600px] animate-fade-in">
+        {/* Left Side: Dark Luxury Editorial Image */}
+        <div className="hidden md:block md:w-1/2 relative min-h-[550px] bg-[#0d0d0d]">
+          <FashionImage
+            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop"
+            alt="Dark Luxury Fashion"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-          <div className="absolute bottom-stack-lg left-gutter text-on-primary p-6">
-            <h2 className="font-display text-3xl font-semibold mb-2 text-white drop-shadow-md">Curate Your Style</h2>
-            <p className="font-body text-sm text-white/90 max-w-sm drop-shadow-md">
-              Welcome to your digital wardrobe concierge. Discover pieces that perfectly match your aesthetic.
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="absolute bottom-10 left-8 right-8 z-10">
+            <span className="text-[10px] bg-[#D4AF37] text-black font-bold px-3 py-0.5 rounded-full uppercase tracking-widest">
+              Haute Couture AI Concierge
+            </span>
+            <h2 className="font-display text-3xl font-bold text-white mt-2 drop-shadow-md">
+              Curate Your Style DNA
+            </h2>
+            <p className="text-xs text-gray-300 mt-2 max-w-sm leading-relaxed drop-shadow">
+              Step into your digital luxury closet. Discover bespoke outfit curations tailored to your taste and local weather.
             </p>
           </div>
         </div>
 
         {/* Right Side: Form */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center p-stack-lg bg-surface">
+        <div className="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-12">
           <div className="mb-8 text-center md:text-left">
-            <h1 className="font-display text-4xl text-primary font-bold mb-2">WearWell</h1>
-            <p className="font-body text-on-surface-variant text-base">
-              {isSignUp ? 'Create your personal concierge account.' : 'Welcome back. Please enter your details.'}
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] via-[#F3E5AB] to-[#AA771C] flex items-center justify-center text-black font-bold font-display text-xl shadow-gold-glow">
+                W
+              </div>
+              <h1 className="font-display text-3xl font-bold text-gold-gradient tracking-wider">WEARWELL</h1>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">
+              {isSignUp ? 'Create your personal concierge account.' : 'Welcome back to your haute couture portal.'}
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md mx-auto md:mx-0">
             {isSignUp && (
               <div>
-                <label className="block font-label text-xs uppercase tracking-wider text-on-surface-variant mb-1" htmlFor="name">
-                  Full Name
-                </label>
+                <label className="block text-xs uppercase font-bold text-[#D4AF37] mb-1">Full Name</label>
                 <div className="relative">
-                  <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-lg">person</span>
+                  <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
+                    person
+                  </span>
                   <input
-                    className="w-full bg-surface-container-lowest border border-surface-variant rounded-full py-3 pl-10 pr-4 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm"
-                    id="name"
+                    className="w-full bg-[#0d0d0d] border border-[#262626] focus:border-[#D4AF37] rounded-xl py-3 pl-10 pr-4 text-xs text-white focus:outline-none"
                     placeholder="Sophia Chen"
                     type="text"
+                    required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -64,14 +73,13 @@ export default function LoginSignUp() {
             )}
 
             <div>
-              <label className="block font-label text-xs uppercase tracking-wider text-on-surface-variant mb-1" htmlFor="email">
-                Email Address
-              </label>
+              <label className="block text-xs uppercase font-bold text-[#D4AF37] mb-1">Email Address</label>
               <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-lg">mail</span>
+                <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
+                  mail
+                </span>
                 <input
-                  className="w-full bg-surface-container-lowest border border-surface-variant rounded-full py-3 pl-10 pr-4 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm"
-                  id="email"
+                  className="w-full bg-[#0d0d0d] border border-[#262626] focus:border-[#D4AF37] rounded-xl py-3 pl-10 pr-4 text-xs text-white focus:outline-none"
                   placeholder="sophia@example.com"
                   type="email"
                   required
@@ -82,14 +90,13 @@ export default function LoginSignUp() {
             </div>
 
             <div>
-              <label className="block font-label text-xs uppercase tracking-wider text-on-surface-variant mb-1" htmlFor="password">
-                Password
-              </label>
+              <label className="block text-xs uppercase font-bold text-[#D4AF37] mb-1">Password</label>
               <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-lg">lock</span>
+                <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
+                  lock
+                </span>
                 <input
-                  className="w-full bg-surface-container-lowest border border-surface-variant rounded-full py-3 pl-10 pr-4 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm"
-                  id="password"
+                  className="w-full bg-[#0d0d0d] border border-[#262626] focus:border-[#D4AF37] rounded-xl py-3 pl-10 pr-4 text-xs text-white focus:outline-none"
                   placeholder="••••••••"
                   type="password"
                   required
@@ -99,62 +106,39 @@ export default function LoginSignUp() {
               </div>
             </div>
 
-            {!isSignUp && (
-              <div className="flex items-center justify-between text-xs">
-                <div className="flex items-center">
-                  <input className="h-4 w-4 text-primary focus:ring-primary border-outline-variant rounded" id="remember-me" type="checkbox" />
-                  <label className="ml-2 text-on-surface-variant" htmlFor="remember-me">Remember me</label>
-                </div>
-                <a className="text-primary hover:underline font-medium" href="#">Forgot password?</a>
-              </div>
-            )}
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-3 px-4 rounded-[16px] shadow-sm font-medium text-sm text-on-primary bg-primary hover:bg-primary-container focus:outline-none transition-all hover:scale-[1.01] active:scale-[0.99] mt-2"
-              >
-                {isSignUp ? 'Create Account' : 'Sign in'}
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="btn-gold w-full py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold shadow-gold-glow mt-4"
+            >
+              {isSignUp ? 'Create Concierge Account' : 'Sign In'}
+            </button>
 
             <div className="relative my-4">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-surface-variant"></div>
+                <div className="w-full border-t border-[#262626]" />
               </div>
-              <div className="relative flex justify-center text-xs">
-                <span className="px-3 bg-surface text-on-surface-variant font-label text-[11px] uppercase tracking-wider">
-                  Or continue with
-                </span>
+              <div className="relative flex justify-center text-[10px] uppercase font-bold text-gray-400">
+                <span className="px-3 bg-[#141414] text-[#D4AF37]">Or access demo concierge</span>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => navigate('/')}
-                className="w-full flex justify-center items-center py-2.5 px-4 border border-surface-variant rounded-[16px] bg-surface-container-lowest text-xs font-medium text-on-surface hover:bg-surface-container-low transition-colors"
-              >
-                <span className="material-symbols-outlined mr-2 text-base text-primary">cruelty_free</span> Google
-              </button>
-              <button
-                type="button"
-                onClick={() => navigate('/')}
-                className="w-full flex justify-center items-center py-2.5 px-4 border border-surface-variant rounded-[16px] bg-surface-container-lowest text-xs font-medium text-on-surface hover:bg-surface-container-low transition-colors"
-              >
-                <span className="material-symbols-outlined mr-2 text-base text-primary">file_download</span> Apple
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="w-full flex justify-center items-center py-2.5 px-4 border border-[#262626] rounded-xl bg-[#0d0d0d] text-xs font-semibold text-gray-300 hover:text-[#D4AF37] hover:border-[#D4AF37]/50 transition-colors"
+            >
+              Enter as Guest Member &rarr;
+            </button>
           </form>
 
-          <p className="mt-6 text-center md:text-left text-sm text-on-surface-variant">
+          <p className="mt-6 text-center md:text-left text-xs text-gray-400">
             {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
             <button
               type="button"
               onClick={() => setIsSignUp(!isSignUp)}
-              className="text-primary hover:underline font-semibold ml-1"
+              className="text-[#D4AF37] hover:underline font-bold ml-1"
             >
-              {isSignUp ? 'Sign in' : 'Sign up'}
+              {isSignUp ? 'Sign In' : 'Sign Up'}
             </button>
           </p>
         </div>

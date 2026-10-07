@@ -4,8 +4,14 @@
 
 @layer base {
   body {
-    background-color: theme('colors.surface');
-    color: theme('colors.on-surface');
+    background-color: #0a0a0a;
+    color: #f5f5f7;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
   }
 }
 
@@ -26,42 +32,64 @@
   scrollbar-width: none;
 }
 
-/* Soft Ambient Shadows for Luxury Lookbooks */
-.ambient-shadow {
-  box-shadow: 0px 10px 30px rgba(67, 24, 48, 0.04);
-}
-
-.lookbook-tile {
-  aspect-ratio: 2/3;
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar for dark theme */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: #141414;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #d4c2c8;
+  background: #333333;
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #827378;
+  background: #D4AF37;
 }
 
-/* Drag and Drop utility styles */
-.draggable-item {
-  cursor: grab;
+/* Gold Gradient Button Utility */
+.btn-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #AA771C 100%);
+  color: #000000;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
-.draggable-item:active {
-  cursor: grabbing;
+.btn-gold:hover {
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #B8860B 100%);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
 }
-.drop-zone {
-  border: 2px dashed transparent;
-  transition: border-color 0.3s;
+.btn-gold:active {
+  transform: translateY(0);
 }
-.drop-zone.drag-over {
-  border-color: #431830;
-  background-color: #ebe8e3;
+
+/* Dark Card with Gold Hover Effect */
+.card-dark {
+  background-color: #141414;
+  border: 1px solid #262626;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.card-dark:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Subtle Gold Glassmorphism */
+.glass-gold {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Text Gold Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF0C2 0%, #D4AF37 50%, #AA771C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
